@@ -1,0 +1,158 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{fixltx2e}
+\usepackage{enumitem}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Filter design using Convex Optimization}
+
+\maketitle
+
+\section{Introduction}
+Filter design is an important task in signal processing, which involves designing a system that can selectively pass or reject certain frequency components of a signal. Convex optimization is a mathematical technique that can be used to solve many engineering problems, including filter design.
+
+Convex optimization provides a rigorous and efficient framework for solving many optimization problems, including those arising in filter design. It ensures that the designed filter has desirable properties such as stability, causality, and minimum phase, which are important for practical applications.
+
+Moreover, convex optimization allows the designer to specify the desired frequency response of the filter in a flexible and accurate manner. This is achieved by formulating the filter design problem as an optimization problem with convex constraints and objectives. The convexity of the optimization problem guarantees that it can be efficiently solved using numerical algorithms, and that the solution is globally optimal.
+
+In summary, the need to do filter designing using convex optimization arises from the desire to obtain a filter with desirable properties and a flexible and accurate frequency response, while ensuring efficient and reliable design.
+
+\section{FIR Filters}
+\subsection{Definition}
+In signal processing, a finite impulse response (FIR) filter is a filter whose impulse response (or response to any finite length input) is of finite duration, because it settles to zero in finite time. This is in contrast to infinite impulse response (IIR) filters, which may have internal feedback and may continue to respond indefinitely (usually decaying).
+
+The impulse response of an Nth-order discrete-time FIR filter (i.e., with a Kronecker delta impulse input) lasts for N + 1 samples, and then settles to zero.
+
+FIR filters can be discrete-time or continuous-time, and digital or analog
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=\columnwidth]{figs/FIR}
+	\end{center}
+\caption{FIR filter block diagram}
+\label{fig:Fig1}
+\end{figure}
+
+A discrete-time FIR filter of order $N$. The top part is an $N$-stage delay line with $N+1$ taps. Each unit delay is a $z^-1$ operator in the Z-transform notation. The output $y$ of a linear time invariant system is determined by convolving its input signal $x$ with its impulse response $b$. For a discrete-time FIR filter, the output is a weighted sum of the current and a finite number of previous values of the input. The operation is described by the following equation, which defines the output sequence $y[n]$ in terms of input sequence $x[n]$.
+\begin{align}
+y[n] &= b_0x[n]+b_1x[n-1]+---+b_Nx[n-N]\\
+ 	 &= \sum_{i=0}^{N}b_ix[n-i] 
+\end{align} 
+where,
+\begin{itemize}
+\item $x[n]$ is the input signal
+\item $y[n]$ is the output signal
+\item $b_i$ are the filter coefficients, also known as tap weights, that make up the impulse response
+\item $N$ is the filter order
+\end{itemize}
+
+\subsection{FIR properties}
+An FIR filter has a number of useful properties which sometimes make it preferable to an infinite impulse response (IIR) filter. FIR filters:
+\begin{itemize}
+\item\textbf{Require no feedback} This means that any rounding errors are not compounded by summed iterations. The same relative error occurs in each calculation. This also makes implementation simpler.
+\item\textbf{Inherent stability} This is due to the fact that, because there is no required feedback, all
+the poles are located at the origin and thus are located within the unit circle (the required condition for stability in a Z transformed system).
+\item\textbf{Phase issue} can easily be designed to be linear phase by making the coefficient sequence symmetric; linear phase, or phase change proportional to frequency, corresponds to equal delay at all frequencies. This property is sometimes desired for phase-sensitive applications, for example data communications, crossover filters, and mastering.
+
+The main disadvantage of FIR filters is that considerably more computation power in a general purpose processor is required compared to an IIR filter with similar sharpness or selectivity, especially when low frequency (relative to the sample rate) cutoffs are needed. However many digital signal processors provide specialized hardware features to make FIR filters approximately as efficient as IIR for many applications.
+\end{itemize}
+
+\subsection{FIR Impulse response}
+The impulse response $h[n]$ can be calculated if we set $x[n] = \delta[n]$ in the above relation, where $delta[n]$ is the Kronecker delta impulse. The impulse response for an FIR filter then becomes the set of coefficients $b_n$, as follows
+\begin{align}
+h[n] = \sum_{i=0}^{N}b_i\delta[n-i] = b_n
+\end{align}
+The Z-transform of the impulse response yields the transfer function of the FIR filter
+\begin{align}
+H(z) &= Z(h[n])\\
+	 &= \sum_{n=-\infty}^{\infty}h[n]z^{-n}\\
+	 &= \sum_{n=0}^{N}b_nz^{-n}
+\end{align}\\
+\section{FIR Low pass filter design}
+Considering the (symmetric, linear phase) finite impulse response(FIR) filter described by its frequency response
+\begin{align}
+H(\omega) = a_0 + \sum_{k=1}^{N}a_kcosk\omega
+\end{align}
+where $\omega \in [0,\pi]$ is the frequency. The design variables in our problem are the real coefficients $a = (a_0,....,a_N)\in \textbf{R}^{N+1}$, where N is called the order or length of the FIR filter. In this problem we will explore the design of a low-pass filter, with specifications:
+\begin{itemize}
+\item For $0\le\omega\le\pi/3,0.89\le H(\omega)\le1.12$,i.e., the filter has about $\pm$1dB ripple in the passband $[0,\pi/3]$.
+\item For $0\le\omega\le\pi, |H(\omega)|\le \alpha$. In other words, the filter achieves an attenuation given by $\alpha$ in the stopband $[\omega_c,\pi]$. Here $\omega_c$ is called the filter cutoff frequency.
+\end{itemize} 
+\subsection{Problem formulation}
+\begin{enumerate}[label=(\alph*)]
+\item \textit{Maximum stopband attenuation.} We fix $w_c$ and $N$, and wish to maximize the stopband attenuation, i.e., minimize $\alpha$.
+
+The problem can be expressed as
+\begin{align}
+\text{minimize } \alpha\\
+\text{subject to } f_1(a)&\le 1.12\\
+				   f_2(a)&\ge 0.89\\
+				   f_3(a)&\le \alpha\\
+				   f_4(a)&\ge -\alpha
+\end{align}
+where,
+\begin{align}
+f_1(a) &= \underset{0\le \omega \le pi/3}{\text{sup}}H(\omega)\\
+f_2(a) &= \underset{0\le \omega \le pi/3}{\text{inf}}H(\omega)\\
+f_3(a) &= \underset{0\le \omega \le pi}{\text{sup}}H(\omega)\\
+f_4(a) &= \underset{0\le \omega \le pi}{\text{inf}}H(\omega)
+\end{align}
+for each $\omega$, $H(\omega)$ is a linear function of $a$. Hence the functions $f_1$ and $f_3$ are convex, and $f_2$ and $f_4$ are concave. It follows that the problem is convex.
+
+\item \textit{Minimum transition band}. We fix $N$ and $\alpha$, and want to minimize $\omega_c$, i.e., we set the stopband attenuation and filter length, and wish to minimize the transition band (between $\pi/3$ and $\omega_c$).
+This problem can be expressed as
+\begin{align}
+\text{minimize } f_5(a)\\
+\text{subject to } f_1(a)&\le 1.12\\
+				   f_2(a)&\ge 0.89\\
+\end{align}
+where $f_1$ and $f_2$ are the same functions as above, and
+\begin{align}
+f_5(a) &= inf\{\Omega| -\alpha\le H(\omega)\le \alpha for \Omega \le \omega \le \pi\}
+\end{align}
+This is a quasiconvex optimization problem in the variables $a$ because $f_1$ is convex, $f_2$ is concave, and $f_5$ is quasiconvex: its sublevel sets are
+\begin{align}
+\{a | f_5(a)\le\Omega\} = \{a| -\alpha\le H(\omega)\le \alpha for \Omega \le \omega \le \pi\}
+\end{align}
+i.e., the intersection of an infinite number of halfspaces.
+
+\item \textit{Shortest length filter.} We fix $w_c$ and $\alpha$, and wish to find the smallest $N$ that can meet the specifications, i.e., we seek the shortest length FIR filter that can meet the specifications.
+\begin{align}
+\text{minimize } f_6(a)\\
+\text{subject to } f_1(a)&\le 1.12\\
+				   f_2(a)&\ge 0.89\\
+				   f_3(a)&\le \alpha\\
+				   f_4(a)&\ge -\alpha
+\end{align}
+where $f_1$, $f_2$, $f_3$ and $f_4$ are defined above and
+\begin{align}
+f_6(a) = min\{k|a_{k+1} = ...=a_N=0\}
+\end{align}
+The sublevel sets of $f_6$ are affine sets:
+\begin{align}
+\{a|f_6(a)\le k\} = \{k|a_{k+1} = ...=a_N=0\}
+\end{align}
+This means $f_6$ is a quasiconvex function, and again we have a quasiconvex optimization problem.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
