@@ -15,7 +15,16 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Filter design using Convex Optimization} 
+\title{Filter design using Convex Optimization}
+
+\author{\IEEEauthorblockN{Satheesh Kumar Simhachalam}
+\IEEEauthorblockA{\textit{EE22RESCH11010}
+}
+\and
+\IEEEauthorblockN{Parv Chandola}
+\IEEEauthorblockA{\textit{EE22MTECH12005} \\
+}
+}
 
 \maketitle
 
@@ -43,16 +52,16 @@ FIR filters can be discrete-time or continuous-time, and digital or analog
 \label{fig:Fig1}
 \end{figure}
 
-A discrete-time FIR filter of order $N$. The top part is an $N$-stage delay line with $N+1$ taps. Each unit delay is a $z^-1$ operator in the Z-transform notation. The output $y$ of a linear time invariant system is determined by convolving its input signal $x$ with its impulse response $b$. For a discrete-time FIR filter, the output is a weighted sum of the current and a finite number of previous values of the input. The operation is described by the following equation, which defines the output sequence $y[n]$ in terms of input sequence $x[n]$.
+A discrete-time FIR filter of order $N$. The top part is an $N$-stage delay line with $N+1$ taps. Each unit delay is a $z^-1$ operator in the Z-transform notation. The output $y$ of a linear time invariant system is determined by convolving its input signal $x$ with its impulse response $a$. For a discrete-time FIR filter, the output is a weighted sum of the current and a finite number of previous values of the input. The operation is described by the following equation, which defines the output sequence $y[n]$ in terms of input sequence $x[n]$.
 \begin{align}
-y[n] &= b_0x[n]+b_1x[n-1]+---+b_Nx[n-N]\\
- 	 &= \sum_{i=0}^{N}b_ix[n-i] 
+y[n] &= a_0x[n]+a_1x[n-1]+---+a_Nx[n-N]\\
+ 	 &= \sum_{i=0}^{N}a_ix[n-i] 
 \end{align} 
 where,
 \begin{itemize}
 \item $x[n]$ is the input signal
 \item $y[n]$ is the output signal
-\item $b_i$ are the filter coefficients, also known as tap weights, that make up the impulse response
+\item $a_i$ are the filter coefficients, also known as tap weights, that make up the impulse response
 \item $N$ is the filter order
 \end{itemize}
 
@@ -68,15 +77,15 @@ The main disadvantage of FIR filters is that considerably more computation power
 \end{itemize}
 
 \subsection{FIR Impulse response}
-The impulse response $h[n]$ can be calculated if we set $x[n] = \delta[n]$ in the above relation, where $delta[n]$ is the Kronecker delta impulse. The impulse response for an FIR filter then becomes the set of coefficients $b_n$, as follows
+The impulse response $h[n]$ can be calculated if we set $x[n] = \delta[n]$ in the above relation, where $\delta[n]$ is the Kronecker delta impulse. The impulse response for an FIR filter then becomes the set of coefficients $a_n$, as follows
 \begin{align}
-h[n] = \sum_{i=0}^{N}b_i\delta[n-i] = b_n
+h[n] = \sum_{i=0}^{N}a_i\delta[n-i] = a_n
 \end{align}
 The Z-transform of the impulse response yields the transfer function of the FIR filter
 \begin{align}
 H(z) &= Z(h[n])\\
 	 &= \sum_{n=-\infty}^{\infty}h[n]z^{-n}\\
-	 &= \sum_{n=0}^{N}b_nz^{-n}
+	 &= \sum_{n=0}^{N}a_nz^{-n}
 \end{align}\\
 \section{FIR Low pass filter design}
 Considering the (symmetric, linear phase) finite impulse response(FIR) filter described by its frequency response
@@ -86,7 +95,7 @@ H(\omega) = a_0 + \sum_{k=1}^{N}a_kcosk\omega
 where $\omega \in [0,\pi]$ is the frequency. The design variables in our problem are the real coefficients $a = (a_0,....,a_N)\in \textbf{R}^{N+1}$, where N is called the order or length of the FIR filter. In this problem we will explore the design of a low-pass filter, with specifications:
 \begin{itemize}
 \item For $0\le\omega\le\pi/3,0.89\le H(\omega)\le1.12$,i.e., the filter has about $\pm$1dB ripple in the passband $[0,\pi/3]$.
-\item For $0\le\omega\le\pi, |H(\omega)|\le \alpha$. In other words, the filter achieves an attenuation given by $\alpha$ in the stopband $[\omega_c,\pi]$. Here $\omega_c$ is called the filter cutoff frequency.
+\item For $\omega_c\le\omega\le\pi, |H(\omega)|\le \alpha$. In other words, the filter achieves an attenuation given by $\alpha$ in the stopband $[\omega_c,\pi]$. Here $\omega_c$ is called the filter cutoff frequency.
 \end{itemize} 
 \subsection{Problem formulation}
 \begin{enumerate}[label=(\alph*)]
@@ -211,8 +220,9 @@ Deviation of the designed filter response to the ideal filter response has also 
 \label{fig:dev1}
 \end{figure}
 
+
 \item \textit{Minimum transition band}\\
-Different values of $N$ and $\alpha$ have been considered, transition band is minimized and required graphs have been plotted as shown from figure \ref{fig:Fig6} to figure \ref{fig:Fig9}. 
+Different values of $N$ and $\alpha$ have been considered, transition band is minimized. In this problem the optimal $\omega_c$ is found by linearly increasing its value from $\omega_p$ until feasibilty of the solution is obtained. The required graphs have been plotted as shown from figure \ref{fig:Fig6} to figure \ref{fig:Fig9}. 
 \vspace{3mm}
 \begin{center}
 \begin{tabular}{ | m{3em} | m{1cm}| m{1cm}| } 
@@ -279,7 +289,7 @@ Deviation of the designed filter response to the ideal filter response has also 
 
 
 \item \textit{Shortest length filter.}\\
-Different values of $\omega_c$ and $\alpha$ have been considered and length of the filter $N$ is found out for each case and required graphs have been plotted. Here in this problem an iterative linear search is performed in which the problem is checked for feasibility as the value of $N$ keeps on increasing and as the problem is optimal the solution is reached as shown from figure \ref{fig:Fig10} to figure \ref{fig:Fig13}.
+Different values of $\omega_c$ and $\alpha$ have been considered and length of the filter $N$ is found out for each case and required graphs have been plotted. In this problem the optimal N is found by linearly increasing its value until feasibilty of the solution is obtained as shown from figure \ref{fig:Fig10} to figure \ref{fig:Fig13}.
 \vspace{3mm}
 \begin{center}
 \begin{tabular}{ | m{3em} | m{1cm}| m{1cm} | } 
@@ -347,15 +357,24 @@ Deviation of the designed filter response to the ideal filter response has also 
 
 \subsection{Conclusion}
 \begin{enumerate}[label=(\alph*)]
-\item Maximum stopband attenuation.\\
-We observe from the plots that as the length $N$ od the filter increases the attenuation $\alpha$ decreases and as the cutoff frequency $\omega_c$ decreases the attenuation $\alpha$ increases.
+\item \textit{Maximum stopband attenuation.}\\
+We observe from the plots that as the length $N$ of the filter increases, the attenuation $\alpha$ decreases and as the cutoff frequency $\omega_c$ decreases, the attenuation $\alpha$ increases.
 
-\item Minimum transition band\\
-We observe from the plots that as the length $N$ od the filter increases for a fixed value of $alpha$ the transition band gap decreases and keep the length $N$ constant if we increase $\alpha$ the transition band gap decreases.
+\item \textit{Minimum transition band.}\\
+We observe from the plots that as the length $N$ of the filter increases for a fixed value of $alpha$, the transition band gap decreases and keeping the length $N$ constant if we increase $\alpha$, the transition band gap decreases.
 
-\item Shortest length filter.\\
-We observe from the plots that as cutoff frequency $\omega_c$ increases keeping $\alpha$ constant, the length $N$ of the filter increases and if we increase $\alpha$ keeping $\omega_c$ as constant the length of filter decreases.  
+\item \textit{Shortest length filter.}\\
+We observe from the plots that as cutoff frequency $\omega_c$ increases keeping $\alpha$ constant, the length $N$ of the filter increases and if we increase $\alpha$ keeping $\omega_c$ as constant, the length of filter decreases.  
 \end{enumerate}
+
+Futher this optimization problem can also be addressed throgh other complex algorithims such as spectrcal factorization, Log-Chebychev approximation and other algorithims as mentioned in the refrences below, which were not used in the current project.
+
+\begin{thebibliography}{00}
+\bibitem{b1} FIR Filter Design via Spectral Factorization and Convex Optimization by Shao-Po Wu
+Stephen Boyd Lieven Vandenberghe\\ https://web.stanford.edu/~boyd/papers/pdf/magdes.pdf
+\bibitem{b2} Convex Optimization – Boyd and Vandenberghe
+\bibitem{b3} Stephen Boyd, Lieven Vandenberghe - Additional Exercises for Convex Optimization\\
+\end{thebibliography}
 
 
 
