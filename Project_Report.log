@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.13)  29 APR 2023 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.13)  1 MAY 2023 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -114,7 +114,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \c@IEEEbiography=\count181
 \@IEEEtranrubishbin=\box46
 )
-** ATTENTION: Overriding command lockouts (line 2).
+** ATTENTION: Overriding command lockouts (line 3).
 (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
@@ -226,6 +226,16 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen167
 \Gin@req@width=\dimen168
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen169
+\ar@mcellbox=\box49
+\extrarowheight=\dimen170
+\NC@list=\toks21
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box50
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
@@ -258,50 +268,50 @@ Package fixltx2e Warning: fixltx2e is not required with releases after 2015
 Already applied: [0000/00/00] Old fixltx2e package on input line 53.
 ) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip55
-\enit@outerparindent=\dimen169
-\enit@toks=\toks21
-\enit@inbox=\box49
+\labelindent=\skip57
+\enit@outerparindent=\dimen171
+\enit@toks=\toks22
+\enit@inbox=\box51
 \enit@count@id=\count198
 \enitdp@description=\count199
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count266
-\l__pdf_internal_box=\box50
+\l__pdf_internal_box=\box52
 )
 (./Project_Report.aux)
 \openout1 = `Project_Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count267
-\scratchdimen=\dimen170
-\scratchbox=\box51
+\scratchdimen=\dimen172
+\scratchbox=\box53
 \nofMPsegments=\count268
 \nofMParguments=\count269
-\everyMPshowfont=\toks22
+\everyMPshowfont=\toks23
 \MPscratchCnt=\count270
-\MPscratchDim=\dimen171
+\MPscratchDim=\dimen173
 \MPnumerator=\count271
 \makeMPintoPDFobject=\count272
-\everyMPtoPDFconversion=\toks23
+\everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -323,31 +333,139 @@ LaTeX Warning: No \author given.
 <figs/FIR.png, id=1, 297.11pt x 132.495pt>
 File: figs/FIR.png Graphic file (type png)
 <use figs/FIR.png>
-Package pdftex.def Info: figs/FIR.png  used on input line 38.
-(pdftex.def)             Requested size: 252.0pt x 112.3827pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+Package pdftex.def Info: figs/FIR.png  used on input line 40.
+(pdftex.def)             Requested size: 201.60077pt x 89.90736pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \vbox (badness 1577) has occurred while \output is active []
-
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
  <./figs/FIR.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
+
+
+Overfull \hbox (0.89557pt too wide) detected at line 126
+[]
+ []
+
+[2]
+<figs/A/N20_w1.png, id=22, 462.528pt x 346.896pt>
+File: figs/A/N20_w1.png Graphic file (type png)
+<use figs/A/N20_w1.png>
+Package pdftex.def Info: figs/A/N20_w1.png  used on input line 172.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/A/N20_w2.png, id=23, 462.528pt x 346.896pt>
+File: figs/A/N20_w2.png Graphic file (type png)
+<use figs/A/N20_w2.png>
+Package pdftex.def Info: figs/A/N20_w2.png  used on input line 180.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/A/N30_w1.png, id=24, 462.528pt x 346.896pt>
+File: figs/A/N30_w1.png Graphic file (type png)
+<use figs/A/N30_w1.png>
+Package pdftex.def Info: figs/A/N30_w1.png  used on input line 188.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/A/N30_w2.png, id=25, 462.528pt x 346.896pt>
+File: figs/A/N30_w2.png Graphic file (type png)
+<use figs/A/N30_w2.png>
+Package pdftex.def Info: figs/A/N30_w2.png  used on input line 197.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/dev/dev1.png, id=26, 462.528pt x 346.896pt>
+File: figs/dev/dev1.png Graphic file (type png)
+<use figs/dev/dev1.png>
+Package pdftex.def Info: figs/dev/dev1.png  used on input line 207.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/B/N20_a1.png, id=27, 462.528pt x 346.896pt>
+File: figs/B/N20_a1.png Graphic file (type png)
+<use figs/B/N20_a1.png>
+Package pdftex.def Info: figs/B/N20_a1.png  used on input line 234.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/B/N20_a2.png, id=28, 462.528pt x 346.896pt>
+File: figs/B/N20_a2.png Graphic file (type png)
+<use figs/B/N20_a2.png>
+Package pdftex.def Info: figs/B/N20_a2.png  used on input line 243.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/B/N30_a1.png, id=29, 462.528pt x 346.896pt>
+File: figs/B/N30_a1.png Graphic file (type png)
+<use figs/B/N30_a1.png>
+Package pdftex.def Info: figs/B/N30_a1.png  used on input line 252.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/B/N30_a2.png, id=30, 462.528pt x 346.896pt>
+File: figs/B/N30_a2.png Graphic file (type png)
+<use figs/B/N30_a2.png>
+Package pdftex.def Info: figs/B/N30_a2.png  used on input line 261.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/dev/dev2.png, id=31, 462.528pt x 346.896pt>
+File: figs/dev/dev2.png Graphic file (type png)
+<use figs/dev/dev2.png>
+Package pdftex.def Info: figs/dev/dev2.png  used on input line 271.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+[3 <./figs/A/N20_w1.png> <./figs/A/N20_w2.png> <./figs/A/N30_w1.png> <./figs/A/
+N30_w2.png> <./figs/dev/dev1.png> <./figs/B/N20_a1.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/C/w1_a1.png, id=44, 462.528pt x 346.896pt>
+File: figs/C/w1_a1.png Graphic file (type png)
+<use figs/C/w1_a1.png>
+Package pdftex.def Info: figs/C/w1_a1.png  used on input line 301.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+<figs/C/w1_a2.png, id=45, 462.528pt x 346.896pt>
+File: figs/C/w1_a2.png Graphic file (type png)
+<use figs/C/w1_a2.png>
+Package pdftex.def Info: figs/C/w1_a2.png  used on input line 310.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/C/w2_a1.png, id=46, 462.528pt x 346.896pt>
+File: figs/C/w2_a1.png Graphic file (type png)
+<use figs/C/w2_a1.png>
+Package pdftex.def Info: figs/C/w2_a1.png  used on input line 319.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/C/w2_a2.png, id=47, 462.528pt x 346.896pt>
+File: figs/C/w2_a2.png Graphic file (type png)
+<use figs/C/w2_a2.png>
+Package pdftex.def Info: figs/C/w2_a2.png  used on input line 328.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4 <./figs/B/N20_a2.png> <./figs/B/N30_a1.png> <./figs/B/N30_a2.png> <./figs/de
+v/dev2.png> <./figs/C/w1_a1.png>]
+<figs/dev/dev3.png, id=56, 462.528pt x 346.896pt>
+File: figs/dev/dev3.png Graphic file (type png)
+<use figs/dev/dev3.png>
+Package pdftex.def Info: figs/dev/dev3.png  used on input line 338.
+(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ** Conference Paper **
@@ -360,29 +478,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2] (./Project_Report.aux) ) 
+[5 <./figs/C/w1_a2.png> <./figs/C/w2_a1.png> <./figs/C/w2_a2.png> <./figs/dev/d
+ev3.png>] (./Project_Report.aux) ) 
 Here is how much of TeX's memory you used:
- 4147 strings out of 481239
- 60280 string characters out of 5920377
- 316037 words of memory out of 5000000
- 19387 multiletter control sequences out of 15000+600000
- 561230 words of font info for 78 fonts, out of 8000000 for 9000
+ 4358 strings out of 481239
+ 63419 string characters out of 5920377
+ 317066 words of memory out of 5000000
+ 19569 multiletter control sequences out of 15000+600000
+ 564330 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,13n,37p,643b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base
-/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
-tmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Project_Report.pdf (2 pages, 122758 bytes).
+ 30i,13n,37p,643b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
+mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Project_Report.pdf (5 pages, 620721 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

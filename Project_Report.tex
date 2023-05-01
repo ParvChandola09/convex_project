@@ -1,3 +1,4 @@
+
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
@@ -5,6 +6,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\usepackage{array}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{fixltx2e}
@@ -13,7 +15,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Filter design using Convex Optimization}
+\title{Filter design using Convex Optimization} 
 
 \maketitle
 
@@ -35,7 +37,7 @@ The impulse response of an Nth-order discrete-time FIR filter (i.e., with a Kron
 FIR filters can be discrete-time or continuous-time, and digital or analog
 \begin{figure}[!h]
 	\begin{center} 
-	    \includegraphics[width=\columnwidth]{figs/FIR}
+	    \includegraphics[width=0.8\columnwidth]{figs/FIR}
 	\end{center}
 \caption{FIR filter block diagram}
 \label{fig:Fig1}
@@ -116,11 +118,11 @@ This problem can be expressed as
 \end{align}
 where $f_1$ and $f_2$ are the same functions as above, and
 \begin{align}
-f_5(a) &= inf\{\Omega| -\alpha\le H(\omega)\le \alpha for \Omega \le \omega \le \pi\}
+f_5(a) &= inf\{\Omega| -\alpha\le H(\omega)\le \alpha \text{ for } \Omega \le \omega \le \pi\}
 \end{align}
 This is a quasiconvex optimization problem in the variables $a$ because $f_1$ is convex, $f_2$ is concave, and $f_5$ is quasiconvex: its sublevel sets are
 \begin{align}
-\{a | f_5(a)\le\Omega\} = \{a| -\alpha\le H(\omega)\le \alpha for \Omega \le \omega \le \pi\}
+\{a | f_5(a)\le\Omega\} = \{a| -\alpha\le H(\omega)\le \alpha \text{ for } \Omega \le \omega \le \pi\}
 \end{align}
 i.e., the intersection of an infinite number of halfspaces.
 
@@ -142,6 +144,223 @@ The sublevel sets of $f_6$ are affine sets:
 \end{align}
 This means $f_6$ is a quasiconvex function, and again we have a quasiconvex optimization problem.
 \end{enumerate}
+\newpage
+
+\subsection{Results}
+\begin{enumerate}[label=(\alph*)]
+\item \textit{Maximum stopband attenuation.}\\
+Different values of $N$ and $\omega_c$ have been considered and $\alpha_{opt}$ is found out for each case and required graphs have been plotted as shown from figure \ref{fig:Fig2} to figure \ref{fig:Fig5}.
+\vspace{3mm}
+\begin{center}
+\begin{tabular}{ | m{3em} | m{1cm}| m{1cm} | } 
+  \hline
+  $\textbf{N}$& \textbf{$\omega_c$} & \textbf{$\alpha_{opt}$}\\ 
+  \hline
+  20 & $\pi/2.5$ & 0.0067 \\ 
+  \hline
+  20 & $\pi/2.8$ & 0.2420 \\ 
+  \hline
+  30 & $\pi/2.5$ & 0.0004 \\ 
+  \hline
+  30 & $\pi/2.8$ & 0.0915\\ 
+  \hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/A/N20_w1}
+	\end{center}
+\caption{$N=20$ and $\omega_c = \pi/2.5$}
+\label{fig:Fig2}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/A/N20_w2}
+	\end{center}
+\caption{$N=20$ and $\omega_c = \pi/2.8$}
+\label{fig:Fig3}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/A/N30_w1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=30$ and $\omega_c = \pi/2.5$}
+\label{fig:Fig4}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/A/N30_w2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=30$ and $\omega_c = \pi/2.8$}
+\label{fig:Fig5}
+\end{figure}
+
+Deviation of the designed filter response to the ideal filter response has also been plotted as shown in figure \ref{fig:dev1}
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/dev/dev1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{}
+\label{fig:dev1}
+\end{figure}
+
+\item \textit{Minimum transition band}\\
+Different values of $N$ and $\alpha$ have been considered, transition band is minimized and required graphs have been plotted as shown from figure \ref{fig:Fig6} to figure \ref{fig:Fig9}. 
+\vspace{3mm}
+\begin{center}
+\begin{tabular}{ | m{3em} | m{1cm}| m{1cm}| } 
+  \hline
+  $\textbf{N}$& \textbf{$\alpha$}&\textbf{$\omega_c$}\\ 
+  \hline
+  20 & 0.006& 1.2713\\ 
+  \hline
+  20 & 0.08& 1.1767 \\ 
+  \hline
+  30 & 0.006& 1.1894 \\ 
+  \hline
+  30 & 0.08& 1.1264 \\ 
+  \hline
+\end{tabular}
+\end{center}
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/B/N20_a1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=20$ and $\alpha = 0.006$}
+\label{fig:Fig6}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/B/N20_a2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=20$ and $\alpha = 0.08$}
+\label{fig:Fig7}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/B/N30_a1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=30$ and $\alpha = 0.006$}
+\label{fig:Fig8}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/B/N30_a2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$N=30$ and $\alpha = 0.08$}
+\label{fig:Fig9}
+\end{figure}
+
+Deviation of the designed filter response to the ideal filter response has also been plotted as shown in figure \ref{fig:dev2}
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/dev/dev2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{}
+\label{fig:dev2}
+\end{figure}
+
+\newpage
+
+
+\item \textit{Shortest length filter.}\\
+Different values of $\omega_c$ and $\alpha$ have been considered and length of the filter $N$ is found out for each case and required graphs have been plotted. Here in this problem an iterative linear search is performed in which the problem is checked for feasibility as the value of $N$ keeps on increasing and as the problem is optimal the solution is reached as shown from figure \ref{fig:Fig10} to figure \ref{fig:Fig13}.
+\vspace{3mm}
+\begin{center}
+\begin{tabular}{ | m{3em} | m{1cm}| m{1cm} | } 
+  \hline
+  \textbf{$\omega_c$}& \textbf{$\alpha$} & \textbf{$N_{opt}$}\\ 
+  \hline
+  $pi/2.5$ & 0.006 & 21 \\ 
+  \hline
+  $\pi/2.5$ & 0.08 & 12 \\ 
+  \hline
+  $\pi/2.8$ & 0.006 & 57 \\ 
+  \hline
+  $\pi/2.8$ & 0.08 & 31\\ 
+  \hline
+\end{tabular}
+\end{center}
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/C/w1_a1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$\omega_c=\pi/2.5$ and $\alpha = 0.006$}
+\label{fig:Fig10}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/C/w1_a2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$\omega_c=\pi/2.5$ and $\alpha = 0.08$}
+\label{fig:Fig11}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/C/w2_a1}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$\omega_c=\pi/2.8$ and $\alpha = 0.006$}
+\label{fig:Fig12}
+\end{figure}
+
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/C/w2_a2}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{$\omega_c=\pi/2.8$ and $\alpha = 0.08$}
+\label{fig:Fig13}
+\end{figure}
+\newpage
+Deviation of the designed filter response to the ideal filter response has also been plotted as shown in figure \ref{fig:dev3}
+\begin{figure}[!h]
+	\begin{center} 
+	    \includegraphics[width=0.7\columnwidth]{figs/dev/dev3}
+	\end{center}
+%\caption{FIR filter block diagram}
+\caption{}
+\label{fig:dev3}
+\end{figure}
+
+\end{enumerate}
+\newpage
+
+\subsection{Conclusion}
+\begin{enumerate}[label=(\alph*)]
+\item Maximum stopband attenuation.\\
+We observe from the plots that as the length $N$ od the filter increases the attenuation $\alpha$ decreases and as the cutoff frequency $\omega_c$ decreases the attenuation $\alpha$ increases.
+
+\item Minimum transition band\\
+We observe from the plots that as the length $N$ od the filter increases for a fixed value of $alpha$ the transition band gap decreases and keep the length $N$ constant if we increase $\alpha$ the transition band gap decreases.
+
+\item Shortest length filter.\\
+We observe from the plots that as cutoff frequency $\omega_c$ increases keeping $\alpha$ constant, the length $N$ of the filter increases and if we increase $\alpha$ keeping $\omega_c$ as constant the length of filter decreases.  
+\end{enumerate}
+
+
+
+
+
 
 
 
